@@ -5,6 +5,15 @@ import _ from 'lodash';
 function average(data) {
     return _.round(_.sum(data)/data.length);
 }
+
+function max(data) {
+    return _.round(_.max(data));
+}
+
+function min(data) {
+    return _.round(_.min(data));
+}
+
 export default (props) => {
     return (
         <div>
@@ -12,7 +21,7 @@ export default (props) => {
                 <SparklinesLine color={props.color} />
                 <SparklinesReferenceLine type="avg" />
             </Sparklines>
-            <div>{average(props.data)} {props.units}</div>
+            <div className="minmaxDiv" >उच्च: {max(props.data)} {props.units}  औसत: {average(props.data)} {props.units} न्यूनतम: {min(props.data)} {props.units}</div>
         </div>
     );
 }
